@@ -1,0 +1,38 @@
+
+#32位编码
+cohesion:
+  secret: ${random.value}
+  number: ${random.int}
+
+  name: www.cohesion.com
+  desc: ${cohesion.name} is a random name
+
+server:
+  port: 8090
+
+spring:
+  profiles:
+    active: pro
+  datasource:
+    url: jdbc:mysql://localhost:3306/wenda?useUnicode=true&characterEncoding=utf8&useSSL=false
+    username: root
+    password: root
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: Asia/Chongqing
+
+---
+spring:
+    profiles: dev
+server:
+    port: 8080
+---
+spring:
+    profiles: test
+server:
+    port: 8081
+---
+spring:
+    profiles: pro
+server:
+    port: 8082
